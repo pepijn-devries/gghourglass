@@ -2,6 +2,8 @@
 # openmpt <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo"  />
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 TODO
@@ -32,6 +34,6 @@ ggplot(subset(bats, format(RECDATETIME, "%Y") == "2018"),
   labs(x = "Date", y = "Time of day", col = "Species")
 ```
 
-![](man/figures/README-example-1.svg)<!-- -->
+![](man/figures/README-example-1.png)<!-- -->
 
 TODO
