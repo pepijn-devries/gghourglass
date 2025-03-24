@@ -11,8 +11,10 @@ coverage](https://codecov.io/gh/pepijn-devries/gghourglass/branch/master/graph/b
 <!-- badges: end -->
 
 Splits observations with datetime stamps into a date and time of day
-components, then displays them in a scatter plot. Plots can also be
-decorated with coloured ribbons indicating night time.
+components, then displays them in a scatter plot using grammar of
+graphics ([ggplot2](https://ggplot2.tidyverse.org/)). Plots can also be
+decorated with coloured ribbons indicating night time. This is helpful
+for data that are associated with the solar cycle, such as bat activity.
 
 ## Installation
 
