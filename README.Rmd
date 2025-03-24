@@ -9,6 +9,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   fig.ext = "png",
   dev = "png")
+Sys.setlocale("LC_ALL", "English")
 library(ggplot2)
 theme_set(theme_light())
 ```

@@ -1,3 +1,4 @@
+Sys.setlocale("LC_ALL", "English")
 library(ggplot2)
 
 test_that("Hourglass plot looks OK", {
