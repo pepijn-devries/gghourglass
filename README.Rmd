@@ -13,13 +13,17 @@ library(ggplot2)
 theme_set(theme_light())
 ```
 
-# openmpt <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo"  />
+# gghourglass <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo"  />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml)
+[![R-universe version](https://pepijn-devries.r-universe.dev/gghourglass/badges/version)](https://pepijn-devries.r-universe.dev/gghourglass)
+[![Codecov test coverage](https://codecov.io/gh/pepijn-devries/gghourglass/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pepijn-devries/gghourglass?branch=master)
 <!-- badges: end -->
 
-TODO
+Splits observations with datetime stamps into a date and time of day components,
+then displays them in a scatter plot. Plots can also be decorated with coloured ribbons
+indicating night time.
 
 ## Installation
 
@@ -32,19 +36,32 @@ install.packages("gghourglass", repos = c('https://pepijn-devries.r-universe.dev
 ## Example
 
 ```{r example, fig.width=7, fig.height=3, eval=TRUE}
+## load required namespaces
 library(ggplot2)
 library(gghourglass)
 
+## get example data
 data(bats)
 
-monitoring <- attr(bats, "monitoring")
+## subset example date to the year 2018
+bats_sub <- subset(bats, format(RECDATETIME, "%Y") == "2018")
 
-ggplot(subset(bats, format(RECDATETIME, "%Y") == "2018"),
-      aes(x = RECDATETIME, col = SPECDESCSCI)) +
-  annotate_daylight(monitoring$longitude[1], monitoring$latitude[1]) +
-  annotate_daylight(monitoring$longitude[1], monitoring$latitude[1], c("dusk", "dawn")) +
+## retrieve monitoring location
+lon <- attr(bats, "monitoring")$longitude[1]
+lat <- attr(bats, "monitoring")$latitude[1]
+
+## plot the data
+ggplot(bats_sub, aes(x = RECDATETIME, col = SPECDESCSCI)) +
+  
+  ## annotate sunset until sunrise
+  annotate_daylight(lon, lat) +
+  
+  ## annotate dusk until dawn
+  annotate_daylight(lon, lat, c("dusk", "dawn")) +
+  
+  ## add hourglass geometry to plot
   geom_hourglass() +
+  
+  ## add informative labels
   labs(x = "Date", y = "Time of day", col = "Species")
 ```
-
-TODO
