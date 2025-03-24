@@ -6,7 +6,7 @@
 \alias{stat_hourglass}
 \title{A ggplot2 \code{stat} function to wrangle data for \code{geom_hourglass}.}
 \format{
-An object of class \code{StatHourglass} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 5.
+An object of class \code{StatHourglass} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 6.
 }
 \usage{
 StatHourglass
@@ -72,7 +72,7 @@ around noon of the next day.}
 \item{na.rm}{If \code{FALSE}, the default, missing values are removed with a warning.
 If \code{TRUE}, missing values are silently removed.}
 
-\item{...}{Arguments passed to \code{\link[ggplot2:layer]{ggplot2::layer()}}}
+\item{...}{Arguments passed as extra \code{param}s to \code{\link[ggplot2:layer]{ggplot2::layer()}}}
 }
 \value{
 Returns a \code{\link[ggplot2:layer]{ggplot2::layer()}} which can be added to a \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}}

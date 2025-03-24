@@ -6,7 +6,7 @@
 \alias{coord_hourglass}
 \title{Hourglass coordinates for a ggplot}
 \format{
-An object of class \code{CoordHourglass} (inherits from \code{CoordCartesian}, \code{Coord}, \code{ggproto}, \code{gg}) of length 2.
+An object of class \code{CoordHourglass} (inherits from \code{CoordCartesian}, \code{Coord}, \code{ggproto}, \code{gg}) of length 3.
 }
 \usage{
 CoordHourglass
@@ -16,7 +16,9 @@ coord_hourglass(
   ylim = NULL,
   expand = TRUE,
   default = FALSE,
-  clip = "on"
+  clip = "on",
+  date_labels = "\%H:\%M",
+  ...
 )
 }
 \arguments{
@@ -39,6 +41,11 @@ drawing of data points anywhere on the plot, including in the plot margins. If
 limits are set via \code{xlim} and \code{ylim} and some data points fall outside those
 limits, then those data points may show up in places such as the axes, the
 legend, the plot title, or the plot margins.}
+
+\item{date_labels}{Formating string for formatting the time
+labels on the axis. By default it is \code{"\%H:\%M"}.}
+
+\item{...}{Arguments passed as extra \code{param}s to \code{\link[ggplot2:layer]{ggplot2::layer()}}}
 }
 \value{
 Returns a \code{ggproto} object inheriting from \code{coord_cartesian()}.

@@ -7,6 +7,10 @@ StatHourglass <-
       params$flipped_aes <- has_flipped_aes(data, params, main_is_orthogonal = FALSE)
       params
     },
+    setup_data = function(self, data, params) {
+      ggplot2:::remove_missing(data, params$na.rm, c("x", "y"))
+      data
+    },
     compute_group = function(self, data, scales, hour_center, flipped_aes, ...) {
       orientation <- ifelse(flipped_aes, "x", "y")
       opposite     <- ifelse(flipped_aes, "y", "x")
@@ -27,7 +31,8 @@ StatHourglass <-
       data[[opposite]]     <- get_date(datetime, hour_center) |>
         trans$transform()
 
-      data[[orientation]] <- get_hour(datetime, hour_center)
+      data[[orientation]] <- get_hour(datetime, hour_center) |>
+        lubridate::as_datetime()
       data
     },
     required_aes = c("x|y"),
@@ -57,7 +62,7 @@ StatHourglass <-
 #' @inheritParams get_hour
 #' @param na.rm If `FALSE`, the default, missing values are removed with a warning.
 #' If `TRUE`, missing values are silently removed.
-#' @param ... Arguments passed to [ggplot2::layer()]
+#' @param ... Arguments passed as extra `param`s to [ggplot2::layer()]
 #' @returns Returns a [ggplot2::layer()] which can be added to a [ggplot2::ggplot()]
 #' @author Pepijn de Vries
 #' @examples

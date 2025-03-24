@@ -1,4 +1,6 @@
-Sys.setlocale("LC_ALL", "English")
+tryCatch({
+  Sys.setlocale("LC_ALL", "English")
+}, warning = \(w){})
 library(ggplot2)
 
 test_that("Hourglass plot looks OK", {
