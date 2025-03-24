@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Plot Records per Time of Day">
-<meta name="description" content="Splits date and time of day from continuous datetime objects and plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for data that are driven by time of day.">
-<meta property="og:description" content="Splits date and time of day from continuous datetime objects and plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for data that are driven by time of day.">
+<meta name="description" content="Splits date and time of day components from continuous datetime objects, then plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for data that are associated with the solar cycle.">
+<meta property="og:description" content="Splits date and time of day components from continuous datetime objects, then plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for data that are associated with the solar cycle.">
 <meta property="og:image" content="https://pepijn-devries.github.io/gghourglass/logo.svg">
 </head>
 <body>
@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gghourglass</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
 </div>
 <!-- badges: start -->
 
-<p>Splits observations with datetime stamps into a date and time of day components, then displays them in a scatter plot. Plots can also be decorated with coloured ribbons indicating night time.</p>
+<p>Splits observations with datetime stamps into a date and time of day components, then displays them in a scatter plot using grammar of graphics (<a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>). Plots can also be decorated with coloured ribbons indicating night time. This is helpful for data that are associated with the solar cycle, such as bat activity.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>

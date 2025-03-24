@@ -13,7 +13,7 @@ unless you wish to tweak the coordinate system."><meta property="og:image" conte
 
     <a class="navbar-brand me-2" href="../index.html">gghourglass</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,13 +53,15 @@ unless you wish to tweak the coordinate system.</p>
 <span>  ylim <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  expand <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  default <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  clip <span class="op">=</span> <span class="st">"on"</span></span>
+<span>  clip <span class="op">=</span> <span class="st">"on"</span>,</span>
+<span>  date_labels <span class="op">=</span> <span class="st">"%H:%M"</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>An object of class <code>CoordHourglass</code> (inherits from <code>CoordCartesian</code>, <code>Coord</code>, <code>ggproto</code>, <code>gg</code>) of length 2.</p>
+    <p>An object of class <code>CoordHourglass</code> (inherits from <code>CoordCartesian</code>, <code>Coord</code>, <code>ggproto</code>, <code>gg</code>) of length 3.</p>
     </div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
@@ -92,6 +94,15 @@ limits are set via <code>xlim</code> and <code>ylim</code> and some data points 
 limits, then those data points may show up in places such as the axes, the
 legend, the plot title, or the plot margins.</p></dd>
 
+
+<dt id="arg-date-labels">date_labels<a class="anchor" aria-label="anchor" href="#arg-date-labels"></a></dt>
+<dd><p>Formating string for formatting the time
+labels on the axis. By default it is <code>"%H:%M"</code>.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Arguments passed as extra <code>param</code>s to <code><a href="https://ggplot2.tidyverse.org/reference/layer.html" class="external-link">ggplot2::layer()</a></code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -112,11 +123,13 @@ legend, the plot title, or the plot margins.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     default: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     distance: function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     expand: TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     extra_params: date_labels</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     is_free: function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     is_linear: function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     labels: function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     limits: list</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     modify_scales: function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     params: list</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     range: function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     render_axis_h: function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     render_axis_v: function</span>
