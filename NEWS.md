@@ -1,7 +1,8 @@
-gghourglass v0.0.1.0002
+gghourglass v0.0.1.0003
 -------------
 
   * Updated documentation
+  * Added vignettes
   * Improved test coverage
 
 gghourglass v0.0.1
