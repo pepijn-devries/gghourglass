@@ -1,9 +1,13 @@
 
-# gghourglass <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo"  />
+# gghourglass <img src="man/figures/logo.png" align="right" height="139" copyright="cc-sa" alt="logo" />
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml)
+![cranlogs](https://cranlogs.r-pkg.org/badges/gghourglass)
+[![version](https://www.r-pkg.org/badges/version/gghourglass)](https://CRAN.R-project.org/package=gghourglass)
+[![cran
+checks](https://badges.cranchecks.info/worst/gghourglass.svg)](https://cran.r-project.org/web/checks/check_results_gghourglass.html)
 [![R-universe
 version](https://pepijn-devries.r-universe.dev/gghourglass/badges/version)](https://pepijn-devries.r-universe.dev/gghourglass)
 [![Codecov test
@@ -14,7 +18,8 @@ Splits observations with datetime stamps into a date and time of day
 components, then displays them in a scatter plot using grammar of
 graphics ([ggplot2](https://ggplot2.tidyverse.org/)). Plots can also be
 decorated with coloured ribbons indicating night time. This is helpful
-for data that are associated with the solar cycle, such as bat activity.
+for visualising data that are associated with the solar cycle, such as
+bat activity.
 
 ## Installation
 
