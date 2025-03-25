@@ -1,7 +1,8 @@
-gghourglass v0.0.1.0001
+gghourglass v0.0.1.0002
 -------------
 
-  * TODO
+  * Updated documentation
+  * Improved test coverage
 
 gghourglass v0.0.1
 -------------

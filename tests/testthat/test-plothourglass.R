@@ -1,7 +1,7 @@
 tryCatch({
   Sys.setlocale("LC_ALL", "English")
 }, warning = \(w){})
-library(ggplot2)
+library(ggplot2) |> suppressWarnings()
 
 test_that("Hourglass plot looks OK", {
   vdiffr::expect_doppelganger("basic hourglass", {
