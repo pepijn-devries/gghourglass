@@ -1,0 +1,90 @@
+---
+title: "In the zone"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{In the zone}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/timezones-",
+  fig.ext = "png",
+  dev = "png")
+tryCatch({
+  Sys.setlocale("LC_ALL", "English")
+})
+library(ggplot2)
+theme_set(theme_light())
+```
+
+> This vignette presents some vital aspects of time zones when adding
+'hourglass' layers to your plot
+
+```{r setup, message=FALSE, warning=FALSE}
+## load required namespaces for this vignette
+library(ggplot2)
+library(gghourglass)
+library(dplyr)
+library(lubridate)
+```
+
+Whether it's day or night depends on where you are on the Earth's globe.
+This is why you need to pass the longitude and latitude when you
+wish to decorate your plot with ribbons indicating night (or day) time.
+
+But which hour of the day is it anyway? Well, that of course depends on
+the time zone that you use as a reference. the `?bats` dataset, included
+with the `gghourglass` package, expresses the date and time in Coordinated
+Universal Time (UTC). This makes sense when your observations are close to
+the prime meridian, but not so much when you are in a different time zone
+(such as the Central Time Zone in the United States).
+
+Let's make this more clear through an example. We start by plotting the provided observations
+of bat call sequences:
+
+```{r plot-utc, fig.width=7, fig.height=3, eval=TRUE}
+## get example data
+data(bats)
+
+## subset example date to the year 2018
+bats_sub <- subset(bats, format(RECDATETIME, "%Y") == "2019")
+
+## retrieve monitoring location
+lon <- attr(bats, "monitoring")$longitude[1]
+lat <- attr(bats, "monitoring")$latitude[1]
+
+## plot the data
+p <-
+  ggplot(bats_sub, aes(x = RECDATETIME)) +
+  
+    ## annotate sunset until sunrise
+    annotate_daylight(lon, lat) +
+  
+    ## annotate dusk until dawn
+    annotate_daylight(lon, lat, c("dusk", "dawn")) +
+  
+    ## add hourglass geometry to plot
+    geom_hourglass() +
+  
+    ## add informative labels
+    labs(x = "Date", y = "Time of day")
+p
+```
+
+Note that the `geom_hourglass()` layer automatically uses the time zone as
+specified by the data (UTC). If you wish to display it in a different time
+zone, such as for instance Central European Time (CET), you simply mutate
+the time zone of the observations with `lubridate::with_tz()`:
+
+```{r plot-cet, fig.width=7, fig.height=3, eval=TRUE}
+p %+%
+  mutate(bats_sub, RECDATETIME = with_tz(RECDATETIME, "CET"))
+```
+
+Hold on, why is the ribbon indicating night time jagged? This is because
+CET has summer daylight-saving time which causes the night-time to shift
+one hour.

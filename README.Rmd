@@ -35,6 +35,12 @@ with the solar cycle, such as bat activity.
 
 ## Installation
 
+Install CRAN release:
+
+```{r eval=FALSE}
+install.packages("ggsankeyfier")
+```
+
 Install latest developmental version from R-Universe:
 
 ``` r

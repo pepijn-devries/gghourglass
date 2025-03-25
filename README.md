@@ -23,6 +23,12 @@ bat activity.
 
 ## Installation
 
+Install CRAN release:
+
+``` r
+install.packages("ggsankeyfier")
+```
+
 Install latest developmental version from R-Universe:
 
 ``` r
