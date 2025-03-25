@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Plot Records per Time of Day">
-<meta name="description" content="Splits date and time of day components from continuous datetime objects, then plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for data that are associated with the solar cycle.">
-<meta property="og:description" content="Splits date and time of day components from continuous datetime objects, then plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for data that are associated with the solar cycle.">
+<meta name="description" content="Splits date and time of day components from continuous datetime objects, then plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for visualising data that are associated with the solar cycle.">
+<meta property="og:description" content="Splits date and time of day components from continuous datetime objects, then plots them using grammar of graphics (ggplot2). Plots can also be decorated with solar cycle information (e.g., sunset, sunrise, etc.). This is useful for visualising data that are associated with the solar cycle.">
 <meta property="og:image" content="https://pepijn-devries.github.io/gghourglass/logo.svg">
 </head>
 <body>
@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gghourglass</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.0001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/pepijn-devries/gghourglass/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -53,7 +54,7 @@
 </div>
 <!-- badges: start -->
 
-<p>Splits observations with datetime stamps into a date and time of day components, then displays them in a scatter plot using grammar of graphics (<a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>). Plots can also be decorated with coloured ribbons indicating night time. This is helpful for data that are associated with the solar cycle, such as bat activity.</p>
+<p>Splits observations with datetime stamps into a date and time of day components, then displays them in a scatter plot using grammar of graphics (<a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>). Plots can also be decorated with coloured ribbons indicating night time. This is helpful for visualising data that are associated with the solar cycle, such as bat activity.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -96,7 +97,16 @@
 <p><img src="reference/figures/README-example-1.png"><!-- --></p>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=gghourglass" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/pepijn-devries/gghourglass/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/pepijn-devries/gghourglass/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
@@ -124,6 +134,8 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/pepijn-devries/gghourglass/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=gghourglass" class="external-link"><img src="https://www.r-pkg.org/badges/version/gghourglass" alt="version"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_gghourglass.html" class="external-link"><img src="https://badges.cranchecks.info/worst/gghourglass.svg" alt="cran checks"></a></li>
 <li><a href="https://pepijn-devries.r-universe.dev/gghourglass" class="external-link"><img src="https://pepijn-devries.r-universe.dev/gghourglass/badges/version" alt="R-universe version"></a></li>
 <li><a href="https://app.codecov.io/gh/pepijn-devries/gghourglass?branch=master" class="external-link"><img src="https://codecov.io/gh/pepijn-devries/gghourglass/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
