@@ -16,3 +16,9 @@ test_that("Center hour drives get_hour outcome", {
     as.numeric(comparison) == 24*60*60
   })
 })
+
+test_that("StatHourglass doesn't throw an error", {
+  expect_no_error({
+    stat_hourglass()
+  })
+})
