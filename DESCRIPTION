@@ -1,6 +1,6 @@
 Package: gghourglass
 Title: Plot Records per Time of Day
-Version: 0.0.1
+Version: 0.0.1.0001
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")),
@@ -13,8 +13,8 @@ Description: Splits date and time of day components from
     continuous 'datetime' objects, then plots them using grammar
     of graphics ('ggplot2'). Plots can also be decorated with
     solar cycle information (e.g., sunset, sunrise, etc.).
-    This is useful for data that are associated with the
-    solar cycle.
+    This is useful for visualising data that are associated with
+    the solar cycle.
 Depends:
     R (>= 4.1.0)
 Imports:
@@ -35,3 +35,4 @@ RoxygenNote: 7.2.3
 LazyData: true
 Config/testthat/edition: 3
 URL: https://pepijn-devries.github.io/gghourglass/
+BugReports: https://github.com/pepijn-devries/gghourglass/issues
