@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   solar-cycles: solar-cycles.html
   timezones: timezones.html
-last_built: 2025-03-26T10:14Z
+last_built: 2025-03-26T10:18Z
 urls:
   reference: https://pepijn-devries.github.io/gghourglass/reference
   article: https://pepijn-devries.github.io/gghourglass/articles
