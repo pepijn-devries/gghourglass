@@ -35,6 +35,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LazyData: true
+VignetteBuilder: knitr
 Config/testthat/edition: 3
-URL: https://pepijn-devries.github.io/gghourglass/
+URL: https://pepijn-devries.github.io/gghourglass/, https://www.github.com/pepijn-devries/gghourglass
 BugReports: https://github.com/pepijn-devries/gghourglass/issues
