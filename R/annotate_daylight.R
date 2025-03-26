@@ -19,8 +19,7 @@ AnnotateDaylight <-
       xsc        <- axis_scale$trans$inverse(panel_params[[orientation]]$continuous_range)
       sun        <- seq(get_date(xsc[1] - 3*day),
                         get_date(xsc[2] + 3*day), by = day)
-      #########################################################
-      
+
       sun <-
         suncalc::getSunlightTimes(
           data = data.frame(date = as.Date(sun),
@@ -31,8 +30,15 @@ AnnotateDaylight <-
                            data$sun_prop[[1]]) |>
         dplyr::select(dplyr::any_of(c("date", "prop1", "prop2"))) |>
         dplyr::mutate(
+          date = {
+            date <- .data$date
+            lubridate::tz(date) <- lubridate::tz(xsc)
+            date
+          },
           dplyr::across(
-            dplyr::starts_with("prop"), get_hour
+            dplyr::starts_with("prop"), \(x) {
+              get_hour(lubridate::with_tz(x, lubridate::tz(xsc)))
+            }
           )
         ) |>
         dplyr::mutate(
