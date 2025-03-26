@@ -14,7 +14,7 @@ test_that("Hourglass plot looks OK", {
     lat <- attr(bats, "monitoring")$latitude[1]
     
     ggplot(bats_sub, aes(x = RECDATETIME, col = SPECDESCSCI)) +
-      annotate_daylight(lon, lat) +
+      annotate_daylight(lon, lat, c("sunset", "sunrise")) +
       annotate_daylight(lon, lat, c("dusk", "dawn")) +
       geom_hourglass() +
       labs(x = "Date", y = "Time of day", col = "Species")

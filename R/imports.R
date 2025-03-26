@@ -1,4 +1,4 @@
-#' @importFrom rlang %||%
+#' @importFrom rlang %||% .data
 NULL
 
 .dummy <- function() {

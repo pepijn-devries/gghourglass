@@ -1,6 +1,6 @@
 Package: gghourglass
 Title: Plot Records per Time of Day
-Version: 0.0.1.0003
+Version: 0.0.1.0004
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")),
@@ -38,4 +38,3 @@ LazyData: true
 Config/testthat/edition: 3
 URL: https://pepijn-devries.github.io/gghourglass/
 BugReports: https://github.com/pepijn-devries/gghourglass/issues
-VignetteBuilder: knitr

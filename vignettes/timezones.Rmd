@@ -37,7 +37,7 @@ This is why you need to pass the longitude and latitude when you
 wish to decorate your plot with ribbons indicating night (or day) time.
 
 But which hour of the day is it anyway? Well, that of course depends on
-the time zone that you use as a reference. the `?bats` dataset, included
+the time zone that you use as a reference. The `?bats` dataset, included
 with the `gghourglass` package, expresses the date and time in Coordinated
 Universal Time (UTC). This makes sense when your observations are close to
 the prime meridian, but not so much when you are in a different time zone
@@ -62,7 +62,7 @@ p <-
   ggplot(bats_sub, aes(x = RECDATETIME)) +
   
     ## annotate sunset until sunrise
-    annotate_daylight(lon, lat) +
+    annotate_daylight(lon, lat, c("sunset", "sunrise")) +
   
     ## annotate dusk until dawn
     annotate_daylight(lon, lat, c("dusk", "dawn")) +

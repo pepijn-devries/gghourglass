@@ -1,0 +1,79 @@
+---
+title: "From dusk till dawn"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{From dusk till dawn}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/timezones-",
+  fig.ext = "png",
+  dev = "png")
+tryCatch({
+  Sys.setlocale("LC_ALL", "English")
+})
+library(ggplot2)
+theme_set(theme_light())
+```
+
+> This vignette presents some vital aspects of decorating your plot
+with solar cylce information
+
+```{r setup, message=FALSE, warning=FALSE}
+## load required namespaces for this vignette
+library(ggplot2)
+library(gghourglass)
+```
+
+With `annotate_daylight()` you can add ribbons to your plot reflecting
+the solar cycle. By default, it marks the time between sunset and sunrise:
+
+```{r plot-night, fig.width=7, fig.height=3, eval=TRUE}
+## get example data
+data(bats)
+
+## subset example date to the year 2018
+bats_sub <- subset(bats, format(RECDATETIME, "%Y") == "2019")
+
+## retrieve monitoring location
+lon <- attr(bats, "monitoring")$longitude[1]
+lat <- attr(bats, "monitoring")$latitude[1]
+
+## plot the data
+p <- ggplot(bats_sub, aes(x = RECDATETIME)) +
+
+    ## add hourglass geometry to plot
+    geom_hourglass() +
+  
+    ## add informative labels
+    labs(x = "Date", y = "Time of day")
+
+## decorate the plot with night time ribbon
+p + annotate_daylight(lon, lat, c("sunset", "sunrise"), fill = "darkblue")
+```
+
+The order in which you include the solar events matter. In the example above,
+the time between sunset and sunrise (i.e., night time) is marked with a dark blue
+ribbon. But if you reverse the order, it will mark the day time:
+
+```{r plot-day, fig.width=7, fig.height=3, eval=TRUE}
+p + annotate_daylight(lon, lat, c("sunrise", "sunset"), fill = "orange")
+```
+
+Moreover, you are not bound to only sunrise and sunset. You can pick any
+of the events supported by the [suncalc](https://cran.r-project.org/package=suncalc) package:
+
+```{r solar-events, echo=FALSE, results='asis'}
+" * " |>
+  paste0(
+    formals(suncalc::getSunlightTimes)$keep |>
+      eval()) |>
+  paste0(collapse = "\n") |>
+  cat()
+```
+
