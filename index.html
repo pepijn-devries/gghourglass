@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">gghourglass</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.0003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.0004</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,8 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/timezones.html">In the zone</a></li>
+<li><a class="dropdown-item" href="articles/solar-cycles.html">From dusk till dawn</a></li>
+    <li><a class="dropdown-item" href="articles/timezones.html">In the zone</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -60,7 +61,7 @@
 </div>
 <!-- badges: start -->
 
-<p>Splits observations with datetime stamps into a date and time of day components, then displays them in a scatter plot using grammar of graphics (<a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>). Plots can also be decorated with coloured ribbons indicating night time. This is helpful for visualising data that are associated with the solar cycle, such as bat activity.</p>
+<p>Splits observations with datetime stamps into date and time of day components, then displays them in a scatter plot using grammar of graphics (<a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>). Plots can also be decorated with coloured ribbons indicating night time. This is helpful for visualising data that are associated with the solar cycle, such as bat activity.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -93,7 +94,7 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bats_sub</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">RECDATETIME</span>, col <span class="op">=</span> <span class="va">SPECDESCSCI</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  </span>
 <span>  <span class="co">## annotate sunset until sunrise</span></span>
-<span>  <span class="fu"><a href="reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sunset"</span>, <span class="st">"sunrise"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  </span>
 <span>  <span class="co">## annotate dusk until dawn</span></span>
 <span>  <span class="fu"><a href="reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dusk"</span>, <span class="st">"dawn"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>

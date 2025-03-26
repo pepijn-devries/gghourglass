@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>In the zone • gghourglass</title>
+<title>From dusk till dawn • gghourglass</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="In the zone">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="From dusk till dawn">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -56,38 +56,26 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.svg" class="logo" alt=""><h1>In the zone</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>From dusk till dawn</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pepijn-devries/gghourglass/blob/master/vignettes/timezones.Rmd" class="external-link"><code>vignettes/timezones.Rmd</code></a></small>
-      <div class="d-none name"><code>timezones.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/pepijn-devries/gghourglass/blob/master/vignettes/solar-cycles.Rmd" class="external-link"><code>vignettes/solar-cycles.Rmd</code></a></small>
+      <div class="d-none name"><code>solar-cycles.Rmd</code></div>
     </div>
 
     
     
 <blockquote>
-<p>This vignette presents some vital aspects of time zones when adding
-‘hourglass’ layers to your plot</p>
+<p>This vignette presents some vital aspects of decorating your plot
+with solar cylce information</p>
 </blockquote>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## load required namespaces for this vignette</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pepijn-devries.github.io/gghourglass/">gghourglass</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span></span></code></pre></div>
-<p>Whether it’s day or night depends on where you are on the Earth’s
-globe. This is why you need to pass the longitude and latitude when you
-wish to decorate your plot with ribbons indicating night (or day)
-time.</p>
-<p>But which hour of the day is it anyway? Well, that of course depends
-on the time zone that you use as a reference. The <code><a href="../reference/bats.html">?bats</a></code>
-dataset, included with the <code>gghourglass</code> package, expresses
-the date and time in Coordinated Universal Time (UTC). This makes sense
-when your observations are close to the prime meridian, but not so much
-when you are in a different time zone (such as the Central Time Zone in
-the United States).</p>
-<p>Let’s make this more clear through an example. We start by plotting
-the provided observations of bat call sequences:</p>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pepijn-devries.github.io/gghourglass/">gghourglass</a></span><span class="op">)</span></span></code></pre></div>
+<p>With <code><a href="../reference/annotate_daylight.html">annotate_daylight()</a></code> you can add ribbons to your
+plot reflecting the solar cycle. By default, it marks the time between
+sunset and sunrise:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## get example data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bats</span><span class="op">)</span></span>
@@ -100,35 +88,43 @@ the provided observations of bat call sequences:</p>
 <span><span class="va">lat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">bats</span>, <span class="st">"monitoring"</span><span class="op">)</span><span class="op">$</span><span class="va">latitude</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co">## plot the data</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bats_sub</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">RECDATETIME</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  </span>
-<span>    <span class="co">## annotate sunset until sunrise</span></span>
-<span>    <span class="fu"><a href="../reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sunset"</span>, <span class="st">"sunrise"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  </span>
-<span>    <span class="co">## annotate dusk until dawn</span></span>
-<span>    <span class="fu"><a href="../reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dusk"</span>, <span class="st">"dawn"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  </span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bats_sub</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">RECDATETIME</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
 <span>    <span class="co">## add hourglass geometry to plot</span></span>
 <span>    <span class="fu"><a href="../reference/geom_hourglass.html">geom_hourglass</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  </span>
 <span>    <span class="co">## add informative labels</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Date"</span>, y <span class="op">=</span> <span class="st">"Time of day"</span><span class="op">)</span></span>
-<span><span class="va">p</span></span></code></pre></div>
-<p><img src="man%2Ffigures%2Ftimezones-plot-utc-1.png" width="672"></p>
-<p>Note that the <code><a href="../reference/geom_hourglass.html">geom_hourglass()</a></code> layer automatically uses
-the time zone as specified by the data (UTC). If you wish to display it
-in a different time zone, such as for instance Central European Time
-(CET), you simply mutate the time zone of the observations with
-<code><a href="https://lubridate.tidyverse.org/reference/with_tz.html" class="external-link">lubridate::with_tz()</a></code>:</p>
+<span></span>
+<span><span class="co">## decorate the plot with night time ribbon</span></span>
+<span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="../reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sunset"</span>, <span class="st">"sunrise"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="man%2Ffigures%2Ftimezones-plot-night-1.png" width="672"></p>
+<p>The order in which you include the solar events matter. In the
+example above, the time between sunset and sunrise (i.e., night time) is
+marked with a dark blue ribbon. But if you reverse the order, it will
+mark the day time:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op"><a href="https://ggplot2.tidyverse.org/reference/gg-add.html" class="external-link">%+%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">bats_sub</span>, RECDATETIME <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/with_tz.html" class="external-link">with_tz</a></span><span class="op">(</span><span class="va">RECDATETIME</span>, <span class="st">"CET"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="man%2Ffigures%2Ftimezones-plot-cet-1.png" width="672"></p>
-<p>Hold on, why is the ribbon indicating night time jagged? This is
-because CET has summer daylight-saving time which causes the night-time
-to shift one hour.</p>
-  </main>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="../reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sunrise"</span>, <span class="st">"sunset"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="man%2Ffigures%2Ftimezones-plot-day-1.png" width="672"></p>
+<p>Moreover, you are not bound to only sunrise and sunset. You can pick
+any of the events supported by the <a href="https://cran.r-project.org/package=suncalc" class="external-link">suncalc</a>
+package:</p>
+<ul>
+<li>solarNoon</li>
+<li>nadir</li>
+<li>sunrise</li>
+<li>sunset</li>
+<li>sunriseEnd</li>
+<li>sunsetStart</li>
+<li>dawn</li>
+<li>dusk</li>
+<li>nauticalDawn</li>
+<li>nauticalDusk</li>
+<li>nightEnd</li>
+<li>night</li>
+<li>goldenHourEnd</li>
+<li>goldenHour</li>
+</ul></main>
 </div>
 
 
