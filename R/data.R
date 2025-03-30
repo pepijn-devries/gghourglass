@@ -9,7 +9,7 @@
 #' <doi:10.1007/s10661-023-11590-2>
 #' @docType data
 #' @name bats
-#' @format A `data.frame` with 1,049 rows and 2 columns:
+#' @format A `data.frame` with 1,037 rows and 2 columns:
 #' 
 #'   * `RECDATETIME`: datetime of the recorded bat call sequence
 #'   * `SPECDESCSCI`: scientific species name

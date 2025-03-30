@@ -5,7 +5,7 @@
 \alias{bats}
 \title{Observations from a bat detector}
 \format{
-A \code{data.frame} with 1,049 rows and 2 columns:
+A \code{data.frame} with 1,037 rows and 2 columns:
 \itemize{
 \item \code{RECDATETIME}: datetime of the recorded bat call sequence
 \item \code{SPECDESCSCI}: scientific species name
