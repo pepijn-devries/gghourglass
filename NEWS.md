@@ -1,4 +1,4 @@
-gghourglass v0.0.1.0007
+gghourglass v0.0.1.0008
 -------------
 
   * Updated documentation

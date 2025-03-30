@@ -51,7 +51,7 @@ StatHourglass <-
         dplyr::mutate(
           dplyr::across(
             dplyr::ends_with("_infinite"), ~{
-              ifelse(. == 0, dplyr::cur_data()[[gsub("_infinite", "", dplyr::cur_column())]],
+              ifelse(. == 0, dplyr::pick(gsub("_infinite", "", dplyr::cur_column()))[[1]],
                      -12*.)
             },
             .names = "{gsub('_infinite', '', .col)}"
