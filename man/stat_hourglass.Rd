@@ -6,7 +6,7 @@
 \alias{stat_hourglass}
 \title{A ggplot2 \code{stat} function to wrangle data for \code{geom_hourglass}.}
 \format{
-An object of class \code{StatHourglass} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 6.
+An object of class \code{StatHourglass} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 7.
 }
 \usage{
 StatHourglass

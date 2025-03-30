@@ -38,7 +38,7 @@ with the solar cycle, such as bat activity.
 Install CRAN release:
 
 ```{r eval=FALSE}
-install.packages("ggsankeyfier")
+install.packages("gghourglass")
 ```
 
 Install latest developmental version from R-Universe:

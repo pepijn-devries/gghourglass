@@ -18,6 +18,7 @@ coord_hourglass(
   default = FALSE,
   clip = "on",
   date_labels = "\%H:\%M",
+  layer = NULL,
   ...
 )
 }
@@ -44,6 +45,12 @@ legend, the plot title, or the plot margins.}
 
 \item{date_labels}{Formating string for formatting the time
 labels on the axis. By default it is \code{"\%H:\%M"}.}
+
+\item{layer}{This argument allows you to pass the \code{hourglass} layer
+to which the coordinate system should be applied. It is used to
+derive the orientation of the plot. By default it is \code{NULL} and
+an attempt is made to derive the orientation of the plot from its
+axes scales.}
 
 \item{...}{Arguments passed as extra \code{param}s to \code{\link[ggplot2:layer]{ggplot2::layer()}}}
 }

@@ -4,16 +4,33 @@ StatHourglass <-
   ggplot2::ggproto(
     "StatHourglass", ggplot2::Stat,
     setup_params = function(self, data, params) {
-      params$flipped_aes <- has_flipped_aes(data, params, main_is_orthogonal = FALSE)
+      params$flipped_aes <- ggplot2::has_flipped_aes(data, params, main_is_orthogonal = FALSE)
       params
     },
     setup_data = function(self, data, params) {
+      data <-
+        data |>
+        dplyr::mutate(
+          dplyr::across(
+            dplyr::starts_with(c("x", "y")), ~{
+              is.infinite(.)*sign(as.numeric(.))
+            },
+            .names = "{.col}_infinite"
+          ),
+          dplyr::across(
+            dplyr::starts_with(c("x", "y")), ~{
+              x <- .
+              x[is.infinite(x)] <- 0
+              x
+            }
+          )
+          
+        )
       ggplot2:::remove_missing(data, params$na.rm, c("x", "y"))
-      data
     },
     compute_group = function(self, data, scales, hour_center, flipped_aes, ...) {
       orientation <- ifelse(flipped_aes, "x", "y")
-      opposite     <- ifelse(flipped_aes, "y", "x")
+      opposite    <- ifelse(flipped_aes, "y", "x")
       if (!inherits(scales[[opposite]], "ScaleContinuousDatetime")) {
         rlang::abort(c(x = sprintf("Aesthetic `%s` is not a date/time-object",
                                    orientation),
@@ -23,18 +40,56 @@ StatHourglass <-
       if (hour_center < -12 || hour_center > 12)
         rlang::abort(c(x = "`hour_center` should be between -12 and 12.",
                        i = "Use a value between -12 and 12."))
-      
-      secs     <- 24*60*60
-      hours    <- 60*60
+
       trans    <- scales::transform_time(scales[[opposite]]$timezone)
       datetime <- trans$inverse(data[[opposite]])
-      data[[opposite]]     <- get_date(datetime, hour_center) |>
-        trans$transform()
+      orient_to_calc1 <- colnames(data)[startsWith(colnames(data), opposite)]
+      orient_to_calc2 <- gsub(opposite, orientation, orient_to_calc1)
 
-      data[[orientation]] <- get_hour(datetime, hour_center) |>
-        lubridate::as_datetime()
+      data <-
+        data |>
+        dplyr::mutate(
+          dplyr::across(
+            dplyr::ends_with("_infinite"), ~{
+              ifelse(. == 0, dplyr::cur_data()[[gsub("_infinite", "", dplyr::cur_column())]],
+                     -12*.)
+            },
+            .names = "{gsub('_infinite', '', .col)}"
+          )
+        ) |>
+        dplyr::select(!dplyr::ends_with("_infinite"))
+      
+      data <-
+        data |>
+        dplyr::mutate(
+          dplyr::across(
+            dplyr::any_of(orient_to_calc2[orient_to_calc2 %in% colnames(data)]), lubridate::as_datetime
+          ),
+          dplyr::across(
+            dplyr::any_of(orient_to_calc1[!orient_to_calc2 %in% colnames(data)]),
+            ~ {
+              datetime <- trans$inverse(.)
+              get_hour(datetime, hour_center) |>
+                 lubridate::as_datetime()
+            },
+            .names = "{gsub(opposite, orientation, {.col})}"),
+          dplyr::across(
+            dplyr::starts_with(opposite),
+            ~ {
+              datetime <- trans$inverse(.)
+              get_date(datetime, hour_center) |>
+                trans$transform()
+            })
+        )
+      if (all(sprintf(c("%s", "%send"), orientation) %in% names(data)) &&
+          any(data[[orientation]] > data[[sprintf("%send", orientation)]])) {
+        data[[orientation]] <-
+          data[[orientation]] - 60*60*24
+      }
+      data[["orientation"]] <- orientation
       data
     },
+    optional_aes = c("xend", "yend"),
     required_aes = c("x|y"),
     extra_params = c("na.rm", "hour_center")
   )

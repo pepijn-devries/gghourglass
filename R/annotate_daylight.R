@@ -17,6 +17,16 @@ AnnotateDaylight <-
       axis_scale <- panel_params[[orientation]]$scale
       day        <- 60*60*24
       xsc        <- axis_scale$trans$inverse(panel_params[[orientation]]$continuous_range)
+      if (uses_dst(xsc)) {
+        rlang::warn(
+          c(
+            x = paste0("You are displaying a timezone that uses daylight saving time.\n",
+                       "It may contain ambiguous time stamps."),
+            i = paste0("Convert the object to a time zone without daylight time (e.g. 'UTC').\n",
+                       "You can use `lubridate::with_tz()`.")
+          )
+        )
+      }
       sun        <- seq(get_date(xsc[1] - 3*day),
                         get_date(xsc[2] + 3*day), by = day)
 

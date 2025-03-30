@@ -39,7 +39,7 @@ See \code{\link[ggplot2:fortify]{ggplot2::fortify()}} for which variables will b
 contain a column with datetime values (e.g., \code{?POSIXct})}
 
 \item{stat}{Can be used to overwrite the default connection between \code{geom_hourglass}
-and \verb{[stat_hourglass]}.}
+and \code{\link[=stat_hourglass]{stat_hourglass()}}.}
 
 \item{position}{A position adjustment to use on the data for this layer. This
 can be used in various ways, including to prevent overplotting and
@@ -81,7 +81,7 @@ Returns a \code{\link[ggplot2:layer]{ggplot2::layer()}} which can be added to a 
 \code{geom_hourglass()} takes a continuous datetime object, splits in in discrete dates and
 time of day with \code{stat_hourglass()}. This geometry is a wrapper
 to add it as a layer to a ggplot. \code{GeomHourglass} is a ggproto object inheriting from
-\code{?ggplot2::GeomPoint}. It should not be used directly. Instead call \code{geom_hourglass()}.
+\code{?ggplot2::GeomPoint}. It should not be used directly. Instead call \code{\link[=geom_hourglass]{geom_hourglass()}}.
 }
 \examples{
 library(ggplot2)
