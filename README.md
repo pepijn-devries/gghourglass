@@ -26,7 +26,7 @@ bat activity.
 Install CRAN release:
 
 ``` r
-install.packages("ggsankeyfier")
+install.packages("gghourglass")
 ```
 
 Install latest developmental version from R-Universe:
