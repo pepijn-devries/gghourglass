@@ -13,8 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/timezones-",
   fig.ext = "png",
-  dev = "png",
-  dev.args = list(type = "cairo-png"))
+  dev = "png")
 tryCatch({
   Sys.setlocale("LC_ALL", "English")
 })
