@@ -1,14 +1,11 @@
-tryCatch({
-  library(ggplot2)
-  library(dplyr)
-  library(lubridate)
-  Sys.setlocale("LC_ALL", "English")
-}, warning = \(w){})
-library(ggplot2) |> suppressWarnings()
+library(ggplot2, warn.conflicts = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+library(lubridate, warn.conflicts = FALSE)
 
 test_that("Hourglass plot looks OK", {
   vdiffr::expect_doppelganger("basic hourglass", {
-
+    Sys.setlocale("LC_ALL", "English.utf8")
+    
     data(bats)
     
     bats_sub <- subset(bats, format(RECDATETIME, "%Y") == "2018")
@@ -26,6 +23,8 @@ test_that("Hourglass plot looks OK", {
 
 test_that("Period annotation looks OK", {
   vdiffr::expect_doppelganger("monitoring periods", {
+    Sys.setlocale("LC_ALL", "English.utf8")
+    
     monitoring_periods <-
       attr(bats, "monitoring") |>
       mutate(time_on  = as_datetime(time_on),

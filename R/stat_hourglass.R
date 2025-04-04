@@ -37,9 +37,9 @@ StatHourglass <-
                        i = sprintf("Convert `%s` with `as.POSIXct`", orientation)))
       }
       
-      if (hour_center < -12 || hour_center > 12)
-        rlang::abort(c(x = "`hour_center` should be between -12 and 12.",
-                       i = "Use a value between -12 and 12."))
+      if (hour_center < -24 || hour_center > 24)
+        rlang::abort(c(x = "`hour_center` should be between -24 and 24.",
+                       i = "Use a value between -24 and 24."))
 
       trans    <- scales::transform_time(scales[[opposite]]$timezone)
       datetime <- trans$inverse(data[[opposite]])
