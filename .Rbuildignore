@@ -8,3 +8,4 @@
 ^docs$
 ^pkgdown$
 ^vignette/man$
+^CODE_OF_CONDUCT\.md$

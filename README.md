@@ -40,6 +40,12 @@ install.packages("gghourglass", repos = c('https://pepijn-devries.r-universe.dev
 ``` r
 ## load required namespaces
 library(ggplot2)
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following objects are masked from 'package:base':
+#> 
+#>     date, intersect, setdiff, union
 library(gghourglass)
 
 ## get example data
@@ -64,8 +70,22 @@ ggplot(bats_sub, aes(x = RECDATETIME, col = SPECDESCSCI)) +
   ## add hourglass geometry to plot
   geom_hourglass() +
   
+  ## add lunar phase annotation
+  annotate_lunarphase(NULL, lon, lat, radius = grid::unit(2, "mm")) +
+
+  ## extend y-scales to fit lunar phase annotation
+  scale_y_datetime(limits = as_datetime(c(period(-6, "hour"),
+                                          period(+9, "hour")))) +
+  
   ## add informative labels
   labs(x = "Date", y = "Time of day", col = "Species")
 ```
 
-![](man/figures/README-example-1.png)<!-- -->
+![](man/figures/README-example-1.svg)<!-- -->
+
+## Code of Conduct
+
+Please note that the gghourglass project is released with a [Contributor
+Code of
+Conduct](https://pepijn-devries.github.io/gghourglass/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

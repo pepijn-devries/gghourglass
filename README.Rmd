@@ -7,8 +7,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  fig.ext = "png",
-  dev = "png")
+  fig.ext = "svg",
+  dev = "svg")
 tryCatch({
   Sys.setlocale("LC_ALL", "English")
 })
@@ -52,6 +52,7 @@ install.packages("gghourglass", repos = c('https://pepijn-devries.r-universe.dev
 ```{r example, fig.width=7, fig.height=3, eval=TRUE}
 ## load required namespaces
 library(ggplot2)
+library(lubridate)
 library(gghourglass)
 
 ## get example data
@@ -76,6 +77,17 @@ ggplot(bats_sub, aes(x = RECDATETIME, col = SPECDESCSCI)) +
   ## add hourglass geometry to plot
   geom_hourglass() +
   
+  ## add lunar phase annotation
+  annotate_lunarphase(NULL, lon, lat, radius = grid::unit(2, "mm")) +
+
+  ## extend y-scales to fit lunar phase annotation
+  scale_y_datetime(limits = as_datetime(c(period(-6, "hour"),
+                                          period(+9, "hour")))) +
+  
   ## add informative labels
   labs(x = "Date", y = "Time of day", col = "Species")
 ```
+
+## Code of Conduct
+  
+Please note that the gghourglass project is released with a [Contributor Code of Conduct](https://pepijn-devries.github.io/gghourglass/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
