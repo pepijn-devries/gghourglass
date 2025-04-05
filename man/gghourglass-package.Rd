@@ -14,7 +14,7 @@ Splits date and time of day components from continuous 'datetime' objects, then 
 Useful links:
 \itemize{
   \item \url{https://pepijn-devries.github.io/gghourglass/}
-  \item \url{https://www.github.com/pepijn-devries/gghourglass}
+  \item \url{https://github.com/pepijn-devries/gghourglass}
   \item Report bugs at \url{https://github.com/pepijn-devries/gghourglass/issues}
 }
 

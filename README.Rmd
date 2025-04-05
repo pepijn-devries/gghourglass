@@ -49,7 +49,7 @@ install.packages("gghourglass", repos = c('https://pepijn-devries.r-universe.dev
 
 ## Example
 
-```{r example, fig.width=7, fig.height=3, eval=TRUE}
+```{r example, fig.width=7, fig.height=3, eval=TRUE, warning=FALSE, message=FALSE}
 ## load required namespaces
 library(ggplot2)
 library(lubridate)
