@@ -3,7 +3,7 @@ library(lubridate, warn.conflicts = FALSE)
 
 test_that("Lunar polygon looks OK", {
   vdiffr::expect_doppelganger("basic moon phase", {
-    disc_illum <- lunar_phase_polygon(as.POSIXct("2025-04-01"), 5, 50)
+    disc_illum <- lunar_phase_polygon(as_datetime("2025-04-01 UTC"), 5, 50)
     plot(NA, NA, xlim = c(-1,1), ylim = c(-1, 1), asp = 1,
          xlab = "x coord", ylab = "y coord")
     polygon(disc_illum$x, disc_illum$y)
