@@ -41,11 +41,6 @@ install.packages("gghourglass", repos = c('https://pepijn-devries.r-universe.dev
 ## load required namespaces
 library(ggplot2)
 library(lubridate)
-#> 
-#> Attaching package: 'lubridate'
-#> The following objects are masked from 'package:base':
-#> 
-#>     date, intersect, setdiff, union
 library(gghourglass)
 
 ## get example data
