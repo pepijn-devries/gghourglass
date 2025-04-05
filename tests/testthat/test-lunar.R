@@ -1,4 +1,5 @@
 library(ggplot2, warn.conflicts = FALSE)
+library(lubridate, warn.conflicts = FALSE)
 
 test_that("Lunar polygon looks OK", {
   vdiffr::expect_doppelganger("basic moon phase", {
