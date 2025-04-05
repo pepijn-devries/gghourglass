@@ -1,4 +1,4 @@
-gghourglass v0.0.1.0009
+gghourglass v0.0.1.0010
 -------------
 
   * Added `annotate_periodstates()`, `uses_dst()`
