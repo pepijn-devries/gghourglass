@@ -148,7 +148,7 @@ AnnotateDaylight <-
 #' 
 #' ggplot(subset(bats, format(RECDATETIME, "%Y") == "2018"),
 #'        aes(x = RECDATETIME, col = SPECDESCSCI)) +
-#'   annotate_daylight(monitoring$longitude[1], monitoring$latitude[1]) +
+#'   annotate_daylight(monitoring$longitude[1], monitoring$latitude[1], c("sunset", "sunrise")) +
 #'   annotate_daylight(monitoring$longitude[1], monitoring$latitude[1], c("dusk", "dawn")) +
 #'   geom_hourglass()
 #' @export

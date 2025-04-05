@@ -25,11 +25,13 @@ of 1 and is centred around (0, 0). It does not consider lunar eclipses.
 }
 \examples{
 disc_illum <- lunar_phase_polygon(as.POSIXct("2025-04-01"))
-plot(NA, NA, xlim = c(-1,1), ylim = c(-1, 1), asp = 1)
+plot(NA, NA, xlim = c(-1,1), ylim = c(-1, 1), asp = 1,
+     xlab = "x coord", ylab = "y coord")
 polygon(disc_illum$x, disc_illum$y, col = "white")
 
 disc_illum <- lunar_phase_polygon(as.POSIXct("2025-04-01"), 5, 50)
-plot(NA, NA, xlim = c(-1,1), ylim = c(-1, 1), asp = 1)
+plot(NA, NA, xlim = c(-1,1), ylim = c(-1, 1), asp = 1,
+     xlab = "x coord", ylab = "y coord")
 polygon(disc_illum$x, disc_illum$y, col = "white")
 }
 \author{
