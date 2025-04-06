@@ -11,6 +11,8 @@ test_that("Lunar polygon looks OK", {
 })
 
 test_that("Lunar annotation looks OK", {
+  Sys.setlocale("LC_ALL", "English.utf8")
+  
   vdiffr::expect_doppelganger("annotate moon phase", {
     ggplot(data.frame(stamp = seq(as_datetime("2025-04-01 UTC"),
                                   as_datetime("2025-04-30 UTC"),
