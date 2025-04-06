@@ -80,7 +80,7 @@ specified by the data (UTC). If you wish to display it in a different time
 zone, such as for instance Central European Time (CET), you simply mutate
 the time zone of the observations with `lubridate::with_tz()`:
 
-```{r plot-cet, fig.width=7, fig.height=3, eval=TRUE}
+```{r plot-cet, fig.width=7, fig.height=3, eval=TRUE, warning=FALSE}
 p %+%
   mutate(bats_sub, RECDATETIME = with_tz(RECDATETIME, "CET"))
 ```

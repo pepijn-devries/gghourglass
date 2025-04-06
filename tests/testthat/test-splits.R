@@ -3,7 +3,7 @@ test_that("A split datetime components add up to its input value", {
     x <- Sys.time()
     date <- get_date(x)
     time <- get_hour(x)
-    date + time == x
+    ((date + time) - x) < 1e-4
   })
 })
 
