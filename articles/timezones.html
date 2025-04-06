@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gghourglass</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2.0001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,15 +123,7 @@ in a different time zone, such as for instance Central European Time
 <code><a href="https://lubridate.tidyverse.org/reference/with_tz.html" class="external-link">lubridate::with_tz()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op"><a href="https://ggplot2.tidyverse.org/reference/gg-add.html" class="external-link">%+%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">bats_sub</span>, RECDATETIME <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/with_tz.html" class="external-link">with_tz</a></span><span class="op">(</span><span class="va">RECDATETIME</span>, <span class="st">"CET"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: <span style="color: #BB0000;">✖</span> You are displaying a timezone that uses daylight saving time.</span></span>
-<span><span class="co">#&gt; It may contain ambiguous time stamps.</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Convert the object to a time zone without daylight time (e.g. 'UTC').</span></span>
-<span><span class="co">#&gt; You can use `lubridate::with_tz()`.</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> You are displaying a timezone that uses daylight saving time.</span></span>
-<span><span class="co">#&gt; It may contain ambiguous time stamps.</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Convert the object to a time zone without daylight time (e.g. 'UTC').</span></span>
-<span><span class="co">#&gt; You can use `lubridate::with_tz()`.</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">bats_sub</span>, RECDATETIME <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/with_tz.html" class="external-link">with_tz</a></span><span class="op">(</span><span class="va">RECDATETIME</span>, <span class="st">"CET"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="man%2Ffigures%2Ftimezones-plot-cet-1.png" width="672"></p>
 <p>Hold on, why is the ribbon indicating night time jagged? This is
 because CET has summer daylight-saving time which causes the night-time
