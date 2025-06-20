@@ -1,4 +1,4 @@
-gghourglass v0.0.2.0002
+gghourglass v0.0.3
 -------------
 
  * Fixed test to pass on all systems
