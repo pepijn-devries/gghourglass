@@ -22,6 +22,10 @@ test_that("Hourglass plot looks OK", {
 })
 
 test_that("Period annotation looks OK", {
+  
+  skip_if(utils::packageVersion("ggplot2") <= "3.5.2",
+          "Version of ggplot2 will affect this test")
+  
   vdiffr::expect_doppelganger("monitoring periods", {
     Sys.setlocale("LC_ALL", "English.utf8")
     

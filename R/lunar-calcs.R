@@ -63,17 +63,10 @@ AnnotateLunarphase <-
     setup_data = function(data, params) {
 
       data |>
-        dplyr::distinct() |>
-        dplyr::mutate(
-          date      = params$date,
-          lon       = params$longitude,
-          lat       = params$latitude,
-          breaks    = list(params$breaks),
-          placement = list(params$placement),
-          radius    = params$radius,
-          n         = params$n)
+        dplyr::distinct()
     },
-    draw_panel = function(self, data, panel_params, coord) {
+    draw_panel = function(self, data, panel_params, coord, date,
+                          longitude, latitude, breaks, placement, radius, n) {
       if (inherits(coord, "CoordHourglass")) {
         orientation <- ifelse((unlist(panel_params$y$scale$name) %||% "") == "hourglass",
                               "x", "y")
@@ -84,7 +77,7 @@ AnnotateLunarphase <-
       } else if (inherits(coord, "CoordCartesian") &&
                  inherits(panel_params$y$scale, "ScaleContinuousDatetime")) {
         orientation <- "y"
-      } else if (!is.null(data$date[[1]])) {
+      } else if (!missing(date)) {
         orientation <- "x"
       } else {
         rlang::abort(c(x = "Coordinate system is not supported by AnnotateLunarphase",
@@ -103,18 +96,18 @@ AnnotateLunarphase <-
           dplyr::mutate(
             lunar_stamps = {
               pol <- lunar_phase_polygon(
-                .data$x_inv, data$lon[[1]], data$lat[[1]], data$n[[1]]) |>
+                .data$x_inv, longitude, latitude, n) |>
                 dplyr::summarise(
-                  x = list(grid::unit(.env$x_center, "native") + .data$x * data$radius[[1]]),
-                  y = list(grid::unit(.env$y_center, "native") + .data$y * data$radius[[1]])
+                  x = list(grid::unit(.env$x_center, "native") + .data$x * radius),
+                  y = list(grid::unit(.env$y_center, "native") + .data$y * radius)
                 )
               circ <-
                 dplyr::tibble(
-                  per = seq(0, 2*pi, length.out = data$n[[1]]),
+                  per = seq(0, 2*pi, length.out = n),
                   x = list(grid::unit(.env$x_center, "native") +
-                             sin(per)*data$radius[[1]]),
+                             sin(per)*radius),
                   y = list(grid::unit(.env$y_center, "native") +
-                             cos(per)*data$radius[[1]])
+                             cos(per)*radius)
                 )
               
               gp0 <- do.call(
@@ -150,7 +143,6 @@ AnnotateLunarphase <-
       
       rng        <- panel_params[[orientation]]$continuous_range
       trans      <- panel_params[[orientation]]$get_transformation()
-      breaks     <- data$breaks[[1]]
       if (identical(breaks, ggplot2::waiver())) {
         breaks     <- panel_params[[orientation]]$breaks
         breaks     <- na.omit(breaks)
@@ -160,18 +152,17 @@ AnnotateLunarphase <-
       
       opp_range <- panel_params[[opposite]]$continuous_range
 
-      if (!is.null(data$date[[1]])) {
-        placement <- data$placement[[1]] |> unlist()
+      if (!is.null(date)) {
         if (length(placement) == 1) placement <- c(placement, placement)
 
         moon_grobs(
           min(rng)       + placement[[1]]*diff(rng),
           min(opp_range) + placement[[2]]*diff(opp_range),
-          data$date[[1]]
+          date
         )
       } else {
         
-        moon_grobs( breaks, min(opp_range) + data$placement[[1]][[1]]*diff(opp_range), trans$inverse(breaks) )
+        moon_grobs( breaks, min(opp_range) + placement[[1]]*diff(opp_range), trans$inverse(breaks) )
         
       }
 
