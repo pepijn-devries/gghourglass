@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gghourglass</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2.0001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,14 +98,14 @@ sunset and sunrise:</p>
 <span></span>
 <span><span class="co">## decorate the plot with night time ribbon</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="../reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sunset"</span>, <span class="st">"sunrise"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="man%2Ffigures%2Ftimezones-plot-night-1.png" width="672"></p>
+<p><img src="reference/figures/timezones-plot-night-1.png" width="672"></p>
 <p>The order in which you include the solar events matter. In the
 example above, the time between sunset and sunrise (i.e., night time) is
 marked with a dark blue ribbon. But if you reverse the order, it will
 mark the day time:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="../reference/annotate_daylight.html">annotate_daylight</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sunrise"</span>, <span class="st">"sunset"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="man%2Ffigures%2Ftimezones-plot-day-1.png" width="672"></p>
+<p><img src="reference/figures/timezones-plot-day-1.png" width="672"></p>
 <p>Moreover, you are not bound to only sunrise and sunset. You can pick
 any of the events supported by the <a href="https://cran.r-project.org/package=suncalc" class="external-link">suncalc</a>
 package:</p>
@@ -134,7 +134,7 @@ package:</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
