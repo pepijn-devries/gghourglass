@@ -1,3 +1,8 @@
+gghourglass v0.0.3.0001
+-------------
+
+ * Some overall housekeeping
+
 gghourglass v0.0.3
 -------------
 
