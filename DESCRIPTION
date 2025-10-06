@@ -1,6 +1,6 @@
 Package: gghourglass
 Title: Plot Records per Time of Day
-Version: 0.0.3
+Version: 0.0.3.0001
 Authors@R: c(person("Pepijn", "de Vries", role = c("aut", "cre"),
     email = "pepijn.devries@outlook.com",
     comment = c(ORCID = "0000-0002-7961-6646")),
@@ -35,7 +35,7 @@ Suggests:
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 LazyData: true
 VignetteBuilder: knitr
 Config/testthat/edition: 3

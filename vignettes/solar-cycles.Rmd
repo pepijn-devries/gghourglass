@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/timezones-",
+  fig.path = "man/figures",
   fig.ext = "png",
   dev = "png")
 tryCatch({
